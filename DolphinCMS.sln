@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.Logic", "DA.Logic\DA.Logic.csproj", "{6F7477AB-4F1D-421B-89E6-150A66FB508B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.SharedKernel", "DA.SharedKernel\DA.SharedKernel.csproj", "{8B3C073C-4767-4BD0-8CD1-06372AB2204A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6F7477AB-4F1D-421B-89E6-150A66FB508B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F7477AB-4F1D-421B-89E6-150A66FB508B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F7477AB-4F1D-421B-89E6-150A66FB508B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B3C073C-4767-4BD0-8CD1-06372AB2204A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3C073C-4767-4BD0-8CD1-06372AB2204A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3C073C-4767-4BD0-8CD1-06372AB2204A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3C073C-4767-4BD0-8CD1-06372AB2204A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
