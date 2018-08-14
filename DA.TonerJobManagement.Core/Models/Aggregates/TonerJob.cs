@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DA.TonerJob.Core.Aggregates.Models
+namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
     public class TonerJob : Entity<long>
     {

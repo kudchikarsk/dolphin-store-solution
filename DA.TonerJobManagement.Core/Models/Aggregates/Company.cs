@@ -1,7 +1,7 @@
 ﻿using DA.SharedKernel;
 using System.Collections.Generic;
 
-namespace DA.TonerJob.Core.Aggregates.Models
+namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
     public class Company : Entity<long>
     {

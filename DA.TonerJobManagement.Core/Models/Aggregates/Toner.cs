@@ -1,6 +1,6 @@
 ﻿using DA.SharedKernel;
 
-namespace DA.TonerJob.Core.Aggregates.Models
+namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
     public class Toner : Entity<long>
     {

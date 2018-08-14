@@ -1,18 +1,18 @@
-namespace DA.TonerJob.Data.Migrations
+namespace DA.TonerJobManagement.Data.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DA.TonerJob.Data.TonerJobContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DA.TonerJobManagement.Data.TonerJobContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(DA.TonerJob.Data.TonerJobContext context)
+        protected override void Seed(DA.TonerJobManagement.Data.TonerJobContext context)
         {
             //  This method will be called after migrating to the latest version.
 

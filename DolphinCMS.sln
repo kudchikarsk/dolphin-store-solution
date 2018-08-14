@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDatabaseManagement", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontWeb", "FrontWeb\FrontWeb.csproj", "{1C413D63-D68B-47A1-86C9-199C8A3C0650}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.TonerJob.Core", "DA.TonerJob.Core\DA.TonerJob.Core.csproj", "{64A253EA-8F18-4DCC-B298-F30B303BB61E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DA.TonerJobManagement", "DA.TonerJobManagement", "{2ED34C8E-B788-4212-ABAD-C65127DC921E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.TonerJob.Data", "DA.TonerJob.Data\DA.TonerJob.Data.csproj", "{EAD678A3-5A6B-4B1F-86CE-B670E5FBF648}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.TonerJobManagement.Core", "DA.TonerJobManagement.Core\DA.TonerJobManagement.Core.csproj", "{64A253EA-8F18-4DCC-B298-F30B303BB61E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DA.TonerJob", "DA.TonerJob", "{2ED34C8E-B788-4212-ABAD-C65127DC921E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.TonerJobManagement.Data", "DA.TonerJobManagement.Data\DA.TonerJobManagement.Data.csproj", "{EAD678A3-5A6B-4B1F-86CE-B670E5FBF648}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

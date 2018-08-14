@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DA.TonerJob.Core")]
+[assembly: AssemblyTitle("DA.TonerJobManagement.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DA.TonerJob.Core")]
+[assembly: AssemblyProduct("DA.TonerJobManagement.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("64a253ea-8f18-4dcc-b298-f30b303bb61e")]
+[assembly: Guid("ead678a3-5a6b-4b1f-86ce-b670e5fbf648")]
 
 // Version information for an assembly consists of the following four values:
 //
