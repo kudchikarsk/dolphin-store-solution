@@ -1,4 +1,5 @@
 ﻿using DA.SharedKernel;
+using DA.SharedKernel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,22 +8,21 @@ using System.Threading.Tasks;
 
 namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
-    public class TonerJob : Entity<long>
+    public class TonerJob : Entity<long>, IAggregateRoot
     {
-        public long             ClientId        { get; private set; }
-        public long             CollectedById   { get; private set; }
-        public long             DeliveredById   { get; private set; }        
-        public string           Remarks         { get; private set; }
-        public int              OtherCharges    { get; private set; }
-        public double           Discount        { get; private set; }
+        public long   ClientId      { get ; private set ; } 
+        public long   CollectedById { get ; private set ; } 
+        public long   DeliveredById { get ; private set ; } 
+        public string Remarks       { get ; private set ; } 
+        public int    OtherCharges  { get ; private set ; } 
+        public double Discount      { get ; private set ; } 
 
         public DateTime Modified { get ; private set ; } 
         public DateTime Created  { get ; private set ; } 
         public DateTime In       { get ; private set ; } 
         public DateTime Out      { get ; private set ; } 
-
+        public virtual List<PurchaseItem> PurchasedItems { get; private set; }
         public virtual List<Toner> Toners { get; private set; }
-        public virtual List<TonerPart> TonerParts { get; private set; }
 
         public TonerJob() //For EF
         {
@@ -30,50 +30,59 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
         }
 
         private TonerJob(
-            long             clientId        ,
-            long             collectedById   ,
-            long             deliveredById   ,
-            DateTime         @in             ,
-            DateTime         @out            ,
-            List<Toner>      toners          ,
-            List<TonerPart>  tonerParts      ,
-            string           remarks         ,
-            int              otherCharges    ,
-            DateTime         created         ,
-            DateTime         modified        
+            long                clientId        ,
+            List<Toner>         toners          ,
+            long                collectedById   ,
+            long                deliveredById   ,
+            DateTime            @in             ,
+            DateTime            @out            ,            
+            List<PurchaseItem>  purchaseItems   ,
+            string              remarks         ,
+            int                 otherCharges    ,
+            DateTime            created         ,
+            DateTime            modified        
             )
         {
-            ClientId        =   clientId        ;
-            CollectedById   =   collectedById   ;
-            DeliveredById   =   deliveredById   ;
-            In              =   @in             ;
-            Out             =   @out            ;
-            Toners          =   toners          ;
-            TonerParts      =   tonerParts      ;
-            Remarks         =   remarks         ;
-            OtherCharges    =   otherCharges    ;
-            Created         =   created         ;
-            Modified        =   modified        ;
+            ClientId        = clientId      ; 
+            CollectedById   = collectedById ; 
+            DeliveredById   = deliveredById ; 
+            In              = @in           ; 
+            Out             = @out          ; 
+            Toners          = toners        ;
+            PurchasedItems  = purchaseItems ; 
+            Remarks         = remarks       ; 
+            OtherCharges    = otherCharges  ; 
+            Created         = created       ; 
+            Modified        = modified      ; 
 
         }
 
-        public int GrossTotal => TonerParts.Sum(t => t.SoldAt) + OtherCharges;
+        public int GrossTotal => PurchasedItems.Sum(s => s.StockItem.UnitSellingPrice * s.StockItem.Quantity) + OtherCharges;
         public int NetTotal => (int) Math.Ceiling(GrossTotal - (Discount * GrossTotal));
 
-        public void UpdateTonerParts(IEnumerable<TonerPart> tonerParts)
+        public void UpdatePurchaseItems(IEnumerable<PurchaseItem> purchasedItems)
         {
-            var revertParts = TonerParts.ToList();
-            TonerParts.Clear();
+            var returnedItems = PurchasedItems.ToList();
+            PurchasedItems.Clear();
 
-            TonerParts.AddRange(tonerParts);            
+            PurchasedItems.AddRange(purchasedItems);            
 
             Modified = DateTime.Now;
 
-            //Raise revert parts event
-            //use revertParts within event
+            //TODO Raise returned PurchaseItems event
+            //use returnPurchaseItems within event
 
-            //Raise parts replaced event
-            //use tonerParts within event
+            //TODO Raise bought PurchasedItems event
+            //use purchasedItems within event
+        }
+
+        public void ReturnPurchaseItems()
+        {
+            var returnedItems = PurchasedItems.ToList();
+            PurchasedItems.Clear();
+
+            //TODO Raise returned PurchaseItems event
+            //use returnPurchaseItems within event
         }
 
         public void UpdateIn(DateTime at)
@@ -104,31 +113,34 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
         }
 
         public static TonerJob Create(
-            long             clientId        ,
-            long             collectedById   ,
-            long             deliveredById   ,
-            DateTime         @in             ,
-            DateTime         @out            ,
-            List<Toner>      toners          ,
-            List<TonerPart>  tonerParts      ,
-            string           remarks         ,
-            int              otherCharges    
+            long                clientId        ,
+            List<Toner>         toners          ,
+            long                collectedById   ,
+            long                deliveredById   ,
+            DateTime            @in             ,
+            DateTime            @out            ,
+            List<PurchaseItem>  purchaseItems   ,
+            string              remarks         ,
+            int                 otherCharges    
             )
         {
 
             Guard.ForLessEqualZero(clientId, "clientId");
             Guard.ForLessEqualZero(collectedById, "collectedById");
             Guard.ForLessEqualZero(deliveredById, "deliveredById");
+            Guard.ForNull(purchaseItems, "purchaseItems");
+            Guard.ForNull(toners, "toners");
+
             if (@out < @in) throw new ArgumentException("In time should be less than Out time!");
 
             return new TonerJob(
                 clientId        ,
+                toners          ,
                 collectedById   ,
                 deliveredById   ,
                 @in             ,
                 @out            ,
-                toners          ,
-                tonerParts      ,
+                purchaseItems   ,
                 remarks         ,
                 otherCharges    ,
                 DateTime.Now    ,

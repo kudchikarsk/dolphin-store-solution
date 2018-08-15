@@ -47,9 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TonerJobRepository.cs" />
+    <Compile Include="Repositories\TonnerRepository.cs" />
     <Compile Include="TonerJobContext.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DA.SharedKernel\DA.SharedKernel.csproj">
+      <Project>{8B3C073C-4767-4BD0-8CD1-06372AB2204A}</Project>
+      <Name>DA.SharedKernel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DA.TonerJobManagement.Core\DA.TonerJobManagement.Core.csproj">
       <Project>{64A253EA-8F18-4DCC-B298-F30B303BB61E}</Project>
       <Name>DA.TonerJobManagement.Core</Name>

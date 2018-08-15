@@ -1,9 +1,11 @@
 ﻿using DA.SharedKernel;
+using System.Collections.Generic;
 
 namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
     public class Toner : Entity<long>
     {
-        public virtual Model Model { get; set; }
+        public string Name { get; private set; }
+        public List<TonerJob> TonerJobs { get; private set; }
     }
 }

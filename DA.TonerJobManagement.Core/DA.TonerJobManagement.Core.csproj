@@ -40,15 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ITonerJobRepository.cs" />
-    <Compile Include="Models\Aggregates\Client.cs" />
-    <Compile Include="Models\Aggregates\Company.cs" />
-    <Compile Include="Models\Aggregates\Employee.cs" />
-    <Compile Include="Models\Aggregates\Model.cs" />
-    <Compile Include="Models\Aggregates\PartType.cs" />
+    <Compile Include="Interfaces\ITonnerRepository.cs" />
+    <Compile Include="Models\Aggregates\PurchaseItem.cs" />
+    <Compile Include="Models\Aggregates\StockItem.cs" />
     <Compile Include="Models\Aggregates\Toner.cs" />
     <Compile Include="Models\Aggregates\TonerJob.cs" />
-    <Compile Include="Models\Aggregates\TonerPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

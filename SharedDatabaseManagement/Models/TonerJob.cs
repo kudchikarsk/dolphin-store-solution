@@ -24,7 +24,7 @@ namespace SharedDatabaseManagement.Models
         public virtual Employee CollectedBy { get; set; }
         [ForeignKey("DeliveredById")]
         public virtual Employee DeliveredBy { get; set; }
-        public virtual IList<Toner> Toners { get; set; }
-        public virtual IList<TonerPart> TonerParts { get; set; }
+        public virtual List<Toner> Toners { get; set; }
+        public virtual List<PurchaseItem> PurchaseItems { get; set; }
     }
 }

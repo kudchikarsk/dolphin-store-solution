@@ -7,6 +7,6 @@ namespace SharedDatabaseManagement.Models
         public long   Id   { get ; set ; } 
         public string Name { get ; set ; } 
 
-        public virtual IList<TonerPart> TonerParts { get; set; }
+        public virtual List<TonerPart> TonerParts { get; set; }
     }
 }

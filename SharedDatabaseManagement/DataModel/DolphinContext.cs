@@ -16,9 +16,7 @@ namespace SharedDatabaseManagement.DataModel
         }
 
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Company> Companies { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Model> Models { get; set; }
         public DbSet<PartType> PartTypes { get; set; }
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Toner> Toners { get; set; }

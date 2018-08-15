@@ -20,5 +20,13 @@ namespace DA.SharedKernel
                 throw new ArgumentOutOfRangeException(parameterName);
             }
         }
+
+        public static void ForNull(object @object, string parameterName)
+        {
+            if(@object is null)
+            {
+                throw new ArgumentOutOfRangeException(parameterName);
+            }
+        }
     }
 }
