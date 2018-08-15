@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SharedDatabaseManagement.Models
 {
@@ -6,9 +7,9 @@ namespace SharedDatabaseManagement.Models
     {
 
         public long Id   { get ; set ; } 
-        public int  Name { get ; set ; } 
-
-        public virtual PartType Type { get; set; }
-        public virtual StockItem StockItem { get; set; }
+        public string  Name { get ; set ; } 
+        [ForeignKey("PartType")]
+        public long PartTypeId { get; set; }
+        public virtual PartType PartType { get; set; }
     }
 }

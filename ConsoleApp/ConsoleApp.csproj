@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1E159B53-B26A-414C-987D-28DE457C32FC}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharedDatabaseManagement</RootNamespace>
-    <AssemblyName>SharedDatabaseManagement</AssemblyName>
+    <ProjectGuid>{C0D96BFF-6F5A-4E0A-9217-B6B5CB3D084A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleApp</RootNamespace>
+    <AssemblyName>ConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -47,22 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModel\DolphinContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\PartType.cs" />
-    <Compile Include="Models\PurchaseItem.cs" />
-    <Compile Include="Models\StockItem.cs" />
-    <Compile Include="Models\Toner.cs" />
-    <Compile Include="Models\TonerJob.cs" />
-    <Compile Include="Models\TonerPart.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DA.SharedKernel\DA.SharedKernel.csproj">
+      <Project>{8b3c073c-4767-4bd0-8cd1-06372ab2204a}</Project>
+      <Name>DA.SharedKernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DA.StockManagement.Core\DA.StockManagement.Core.csproj">
+      <Project>{e26a08ed-61ed-42a6-83c4-50c7d0035332}</Project>
+      <Name>DA.StockManagement.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DA.StockManagement.Data\DA.StockManagement.Data.csproj">
+      <Project>{521c6cf9-ee5a-453c-8a86-c87f4ec68b7c}</Project>
+      <Name>DA.StockManagement.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,8 +21,8 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
         public DateTime Created  { get ; private set ; } 
         public DateTime In       { get ; private set ; } 
         public DateTime Out      { get ; private set ; } 
-        public virtual List<PurchaseItem> PurchasedItems { get; private set; }
-        public virtual List<Toner> Toners { get; private set; }
+        public List<PurchaseItem> PurchasedItems { get; private set; }
+        public List<Toner> Toners { get; private set; }
 
         public TonerJob() //For EF
         {

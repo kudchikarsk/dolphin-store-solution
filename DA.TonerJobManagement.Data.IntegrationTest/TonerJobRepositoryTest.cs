@@ -11,25 +11,23 @@ namespace DA.TonerJobManagement.Data.Test
 {
     public class TonerJobRepositoryTest
     {
-        
-        public void TonerJobRepository_Should_New_Job_Without_Error()
+        public void New_Job__Should_Get_Inserted_Without_Error()
         {
             //Arrange
             var context = new TonerJobContext();
             var jobRepository = new TonerJobRepository(context);
             var tonnerRepository = new TonnerRepository(context);
             var tonerJob = TonerJob.Create(1, new List<Toner>() { tonnerRepository.GetTonnerByID(1) }, 1, 1, DateTime.Now, DateTime.Now.AddDays(1), new List<PurchaseItem>(), "", 0);
-            jobRepository.Insert(tonerJob);
 
             //Act
-            Action action = () => context.SaveChanges();
+            Action action = () => jobRepository.Insert(tonerJob);
 
             //Assert
             action.Should().NotThrow<Exception>();
         }
 
         [Fact]
-        public void TonerJobRepository_Should_Get_Results()
+        public void Repo_Should_Get_Results()
         {
             //Arrange
             var context = new TonerJobContext();
