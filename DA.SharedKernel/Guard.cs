@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace DA.SharedKernel
 {
@@ -17,7 +19,7 @@ namespace DA.SharedKernel
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentOutOfRangeException(parameterName);
+                throw new ArgumentException(parameterName);
             }
         }
 
@@ -25,7 +27,29 @@ namespace DA.SharedKernel
         {
             if(@object is null)
             {
-                throw new ArgumentOutOfRangeException(parameterName);
+                throw new ArgumentException(parameterName);
+            }
+        }
+
+        public static void ForEmail(string email, string parameterName)
+        {
+            try
+            {
+                var m = new MailAddress(email);                
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException(parameterName);
+            }
+        }
+
+        public static void ForPhoneNumber(string number, string parameterName)
+        {
+            var isPhoneNumber=Regex.Match(number, @"^(\+[0-9]{15})$").Success;
+
+            if (!isPhoneNumber)
+            {
+                throw new ArgumentException(parameterName);
             }
         }
     }

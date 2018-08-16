@@ -19,6 +19,7 @@ namespace SharedDatabaseManagement.Models
         public DateTime Modified      { get ; set ; } 
         public DateTime Created       { get ; set ; }
 
+        [ForeignKey("ClientId")]
         public virtual Client Client { get; set; }
         [ForeignKey("CollectedById")]
         public virtual Employee CollectedBy { get; set; }

@@ -9,9 +9,10 @@ namespace SharedDatabaseManagement.Models
         public long Id { get; set; }
         public int Quantity { get; set; }
         public int UnitSellingPrice { get; set; }
-        public int UnitPrice { get; set; }
-        [ForeignKey("TonerPart")]
+        public int UnitPrice { get; set; }        
         public long TonerPartId { get; set; }
+
+        [ForeignKey("TonerPartId")]
         public virtual TonerPart TonerPart { get; set; }
         public virtual List<PurchaseItem> PurchaseItems { get; set; }
     }

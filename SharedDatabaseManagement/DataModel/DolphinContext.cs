@@ -35,6 +35,12 @@ namespace SharedDatabaseManagement.DataModel
                         .WithMany(t => t.DeliveredToners)
                         .HasForeignKey(m => m.DeliveredById)
                         .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Toner>()
+                        .HasRequired(t => t.Client)
+                        .WithMany(c=>c.Toners)
+                        .HasForeignKey(t=>t.ClientId)
+                        .WillCascadeOnDelete(false);
         }
     }
 }
