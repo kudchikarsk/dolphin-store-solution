@@ -330,7 +330,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Pages\app.js" />
-    <Content Include="Scripts\Pages\Controllers\ClientController.js" />
+    <Content Include="Scripts\Pages\Controllers\client-toner.js" />
+    <Content Include="Scripts\Pages\Services\client.js" />
+    <Content Include="Scripts\Pages\Services\toner.js" />
+    <Content Include="Scripts\Pages\Views\client-toner.html" />
+    <Content Include="Scripts\Pages\Controllers\client.js" />
+    <Content Include="Scripts\Pages\Views\client.html" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
