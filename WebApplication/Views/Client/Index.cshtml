@@ -4,12 +4,23 @@
 }
 
 <div class="container" ng-controller="ClientController">
-    <div ng-include="'/Scripts/Pages/Views/client.html'" ng-controller="ClientController as clients"></div>
-    <div ng-include="'/Scripts/Pages/Views/client-toner.html'" ng-controller="ClientTonerController as client"></div>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div ng-include="'/Scripts/Pages/Views/client.html'" ng-controller="ClientController"></div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div ng-include="'/Scripts/Pages/Views/client-toner.html'" ng-controller="ClientTonerController"></div>
+        </div>
+    </div>
+    
+    
 </div>
 
 @section scripts{
     <script src="~/Scripts/Pages/Services/client.js"></script>
+    <script src="~/Scripts/Pages/Services/toner.js"></script>
     <script src="~/Scripts/Pages/Controllers/client.js"></script>
     <script src="~/Scripts/Pages/Controllers/client-toner.js"></script>
 }

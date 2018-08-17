@@ -1,17 +1,17 @@
 ﻿angular.module('dolphinApp')
-    .controller("ClientController", ['ClientService', function ($clientService) {
-        this.all = $clientService.get();
-        this.newClient = {};
+    .controller("ClientController", ['$scope', 'ClientService', function ($scope, $clientService) {
+        $scope.all = $clientService.get();
+        $scope.newClient = {};
 
-        this.addNewClient = function () {
-            var client = this.newClient;
-            this.newClient = {}
+        $scope.addNewClient = function () {
+            var client = $scope.newClient;
+            $scope.newClient = {}
             $clientService.add(client);
-            this.all.push(client);
+            $scope.all.push(client);
         }
 
-        this.select = function (client) {
-            $clientService.setSelectedClient(client);
+        $scope.select = function (client) {
+            $clientService.selectClient(client);
         }
 
     }]);

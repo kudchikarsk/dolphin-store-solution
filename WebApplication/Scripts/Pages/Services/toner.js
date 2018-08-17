@@ -1,20 +1,20 @@
 ﻿angular.module('dolphinApp')
     .service("TonerService", function () {
+        return {
+            get: function (client) {
+                console.log("TonerService get fired!" + JSON.stringify(client))
 
-        this.get = function (client) {
-            console.log("TonerService get fired!")
+                return [
+                    { Name: "Epson L800" }
+                ];
+            },
 
-            return [
-                { Name: "Epson L800" }
-            ];
+            add : function (client, toner) {
+                    console.log("TonerService add fired!")
+                },
+
+            update : function (client, toner) {
+                    console.log("TonerService update fired!")
+                }
         }
-
-        this.add = function (client, toner) {
-            console.log("TonerService add fired!")
-        }
-
-        this.update = function (client,toner) {
-            console.log("TonerService update fired!")
-        }
-
     });

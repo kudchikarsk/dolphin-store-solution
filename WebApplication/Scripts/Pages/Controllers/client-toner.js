@@ -1,4 +1,9 @@
 ﻿angular.module('dolphinApp')
-    .controller('ClientTonerController', ['ClientService', 'TonerService', function ($clientService, $tonerService) {
-        this.all = $tonerService.get();
+    .controller('ClientTonerController', ['$scope', 'ClientService', 'TonerService', function ($scope, $clientService, $tonerService) {
+        $scope.client = null;
+        $scope.all = [];
+        $clientService.onClientChange($scope, function () {
+            $scope.client = $clientService.client;
+            $scope.all = $tonerService.get($scope.client);
+        });
     }]);
