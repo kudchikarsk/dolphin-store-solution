@@ -8,8 +8,8 @@ namespace SharedDatabaseManagement.Models
     {
         public long Id { get; set; }
         public int Quantity { get; set; }
-        public int UnitSellingPrice { get; set; }
-        public int UnitPrice { get; set; }        
+        public int SellingPrice { get; set; }
+        public int CostPrice { get; set; }        
         public long TonerPartId { get; set; }
 
         [ForeignKey("TonerPartId")]

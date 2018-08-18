@@ -11,8 +11,8 @@ namespace DA.StockManagement.Core.Models
     public class StockItem : Entity<long>, IAggregateRoot
     {
         public int  Quantity          { get ; private set ; } 
-        public int  UnitSellingPrice { get ; private set ; } 
-        public int  UnitPrice         { get ; private set ; } 
+        public int  SellingPrice { get ; private set ; } 
+        public int  CostPrice         { get ; private set ; } 
         public long TonerPartId       { get ; private set ; }  
 
         public StockItem() //For Ef
@@ -22,47 +22,47 @@ namespace DA.StockManagement.Core.Models
 
         public void Update(
             int quantity,
-            int unitSellingPrice,
-            int unitPrice,
+            int sellingPrice,
+            int costPrice,
             long tonerPartId
             )
         {
             Guard.ForLessEqualZero(tonerPartId, "tonerPartId");
-            Guard.ForLessEqualZero(unitSellingPrice, "unitSelllingPrice");
+            Guard.ForLessEqualZero(sellingPrice, "sellingPrice");
 
             Quantity = quantity;
-            UnitSellingPrice = unitSellingPrice;
-            UnitPrice = unitPrice;
+            SellingPrice = sellingPrice;
+            CostPrice = costPrice;
             TonerPartId = tonerPartId;
         }
 
         private StockItem(
             int quantity,
-            int unitSellingPrice,
-            int unitPrice,
+            int sellingPrice,
+            int costPrice,
             long tonerPartId     
             )
         {
-            Quantity         = quantity         ; 
-            UnitSellingPrice = unitSellingPrice ; 
-            UnitPrice        = unitPrice        ; 
-            TonerPartId      = tonerPartId      ; 
+            Quantity     = quantity     ; 
+            SellingPrice = sellingPrice ; 
+            CostPrice    = costPrice    ; 
+            TonerPartId  = tonerPartId  ;  
         }
 
         public static StockItem Create(
             int  quantity,
-            int  unitSellingPrice,
-            int  unitPrice,
+            int  sellingPrice,
+            int  costPrice,
             long tonerPartId
             )
         {
             Guard.ForLessEqualZero(tonerPartId, "tonerPartId");
-            Guard.ForLessEqualZero(unitSellingPrice, "unitSelllingPrice");
+            Guard.ForLessEqualZero(sellingPrice, "sellingPrice");
 
             return new StockItem(
                 quantity,
-                unitSellingPrice,
-                unitPrice,
+                sellingPrice,
+                costPrice,
                 tonerPartId
                 );
         }
