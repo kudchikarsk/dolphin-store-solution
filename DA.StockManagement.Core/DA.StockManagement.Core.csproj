@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\PartType.cs" />
     <Compile Include="Models\StockItem.cs" />
     <Compile Include="Models\TonerPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

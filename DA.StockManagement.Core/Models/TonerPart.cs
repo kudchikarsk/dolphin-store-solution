@@ -6,7 +6,6 @@ namespace DA.StockManagement.Core.Models
     public class TonerPart : Entity<long>, IAggregateRoot
     {
         public string Name       { get ; private set ; } 
-        public long   PartTypeId { get ; private set ; }  
 
         public TonerPart() //For Ef
         {
@@ -14,32 +13,26 @@ namespace DA.StockManagement.Core.Models
         }
 
         public void Update(
-            string name,
-            long partTypeId
+            string name
             )
         {
             Guard.ForNullOrEmpty(name, "name");
-            Guard.ForLessEqualZero(partTypeId, "tonerPartId");
 
             Name       = name       ; 
-            PartTypeId = partTypeId ; 
         }
 
         private TonerPart(
-            string name,
-            long partTypeId
+            string name
             )
         {
-            Name       = name       ; 
-            PartTypeId = partTypeId ;  
+            Name       = name       ;
         }
 
-        public static TonerPart Create(string name, long partTypeId)
+        public static TonerPart Create(string name)
         {
             Guard.ForNullOrEmpty(name, "name");
-            Guard.ForLessEqualZero(partTypeId, "tonerPartId");
 
-            return new TonerPart(name, partTypeId);
+            return new TonerPart(name);
         }
     }
 }

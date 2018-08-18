@@ -7,7 +7,7 @@ using Xunit;
 
 namespace DA.StockManagement.Data.IntergrationTest
 {
-    public class SrockItemRepoTest
+    public class StockItemRepoTest
     {
         public void New_StockItem_Should_Get_Inserted_Without_Error()
         {

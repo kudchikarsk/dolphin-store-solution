@@ -78,8 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PartTypeRepoTest.cs" />
-    <Compile Include="SrockItemRepoTest.cs" />
+    <Compile Include="StockItemRepoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TonerPartRepoTest.cs" />
   </ItemGroup>

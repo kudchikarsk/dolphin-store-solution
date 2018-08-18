@@ -51,7 +51,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\PartType.cs" />
     <Compile Include="Models\PurchaseItem.cs" />
     <Compile Include="Models\StockItem.cs" />
     <Compile Include="Models\Toner.cs" />

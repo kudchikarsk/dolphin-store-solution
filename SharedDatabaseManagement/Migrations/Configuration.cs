@@ -41,9 +41,9 @@ namespace SharedDatabaseManagement.Migrations
                 Email   = "spider@gmail.com" , 
             };
 
-            context.Clients.AddOrUpdate(client);
-            context.Toners.AddOrUpdate(toner);
-            context.Employees.AddOrUpdate(employee);
+            //context.Clients.AddOrUpdate(client);
+            //context.Toners.AddOrUpdate(toner);
+            //context.Employees.AddOrUpdate(employee);
         }
     }
 }

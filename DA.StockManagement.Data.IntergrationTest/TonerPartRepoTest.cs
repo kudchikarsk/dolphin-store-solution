@@ -15,7 +15,7 @@ namespace DA.StockManagement.Data.IntergrationTest
         public void New_TonerPart_Should_Get_Inserted_Without_Error()
         {
             //Arrange
-            var tonerPart = TonerPart.Create("Epson L800", 1);
+            var tonerPart = TonerPart.Create("Epson L800");
             var repo = new TonerPartRepository(new StockContext());
 
             //Act
