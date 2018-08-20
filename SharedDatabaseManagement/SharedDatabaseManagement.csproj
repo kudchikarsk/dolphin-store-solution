@@ -55,7 +55,6 @@
     <Compile Include="Models\StockItem.cs" />
     <Compile Include="Models\Toner.cs" />
     <Compile Include="Models\TonerJob.cs" />
-    <Compile Include="Models\TonerPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

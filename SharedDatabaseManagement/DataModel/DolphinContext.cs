@@ -19,7 +19,6 @@ namespace SharedDatabaseManagement.DataModel
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Toner> Toners { get; set; }
         public DbSet<TonerJob> TonerJobs { get; set; }
-        public DbSet<TonerPart> TonerParts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

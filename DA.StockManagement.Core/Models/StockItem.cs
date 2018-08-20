@@ -10,10 +10,10 @@ namespace DA.StockManagement.Core.Models
 {
     public class StockItem : Entity<long>, IAggregateRoot
     {
+        public string Name { get; set; }
         public int  Quantity          { get ; private set ; } 
         public int  SellingPrice { get ; private set ; } 
         public int  CostPrice         { get ; private set ; } 
-        public long TonerPartId       { get ; private set ; }  
 
         public StockItem() //For Ef
         {
@@ -21,49 +21,49 @@ namespace DA.StockManagement.Core.Models
         }
 
         public void Update(
+            string name,
             int quantity,
             int sellingPrice,
-            int costPrice,
-            long tonerPartId
+            int costPrice
             )
         {
-            Guard.ForLessEqualZero(tonerPartId, "tonerPartId");
+            Guard.ForNullOrEmpty(name, "name");
             Guard.ForLessEqualZero(sellingPrice, "sellingPrice");
 
+            Name = name;
             Quantity = quantity;
             SellingPrice = sellingPrice;
             CostPrice = costPrice;
-            TonerPartId = tonerPartId;
         }
 
         private StockItem(
+            string name,
             int quantity,
             int sellingPrice,
-            int costPrice,
-            long tonerPartId     
+            int costPrice
             )
         {
+            Name         = name         ; 
             Quantity     = quantity     ; 
             SellingPrice = sellingPrice ; 
             CostPrice    = costPrice    ; 
-            TonerPartId  = tonerPartId  ;  
         }
 
         public static StockItem Create(
+            string name,
             int  quantity,
             int  sellingPrice,
-            int  costPrice,
-            long tonerPartId
+            int  costPrice
             )
         {
-            Guard.ForLessEqualZero(tonerPartId, "tonerPartId");
+            Guard.ForNullOrEmpty(name, "name");
             Guard.ForLessEqualZero(sellingPrice, "sellingPrice");
 
             return new StockItem(
+                name,
                 quantity,
                 sellingPrice,
-                costPrice,
-                tonerPartId
+                costPrice
                 );
         }
     }

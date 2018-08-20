@@ -16,6 +16,5 @@ namespace DA.StockManagement.Data
         }
 
         public DbSet <StockItem> StockItems { get ; set ; } 
-        public DbSet <TonerPart> TonerParts { get ; set ; } 
     }
 }
