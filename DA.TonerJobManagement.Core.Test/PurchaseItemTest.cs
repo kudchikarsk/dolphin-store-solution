@@ -16,7 +16,7 @@ namespace DA.TonerJobManagement.Core.Test
         {
             //Arrange
             //Act
-            Action action = () => PurchaseItem.Create(new StockItem(1, 1, 1, 1), 2);
+            Action action = () => PurchaseItem.Create(new StockItem("Epson L800 Roller", 1, 1, 1), 2);
 
             //Assert
             action.Should().Throw<ArgumentException>().WithMessage("Quantity should be less than or equal to quantity in stock!");

@@ -4,10 +4,10 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
     public class StockItem:Entity<long>
     {
-        public long TonerPartId      { get ; private set ; } 
+        public string Name { get ; private set ; } 
         public int  Quantity         { get ; private set ; } 
-        public int  UnitSellingPrice { get ; private set ; } 
-        public int  UnitPrice        { get ; private set ; }
+        public int  SellingPrice { get ; private set ; } 
+        public int  CostPrice        { get ; private set ; }
 
         public StockItem() // For EF
         {
@@ -15,16 +15,16 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
         }
 
         public StockItem(
-            long tonerPartId      ,
-            int  quantity         ,
-            int  unitSellingPrice ,
-            int  unitPrice        
+            string name,
+            int  quantity     , 
+            int  sellingPrice , 
+            int  costPrice              
             )
         {
-            TonerPartId      = tonerPartId      ;
-            Quantity         = quantity         ;
-            UnitSellingPrice = unitSellingPrice ;
-            UnitPrice        = unitPrice        ;
+            Name = name;
+            Quantity     = quantity     ; 
+            SellingPrice = sellingPrice ; 
+            CostPrice    = costPrice    ;  
         }
     }
 }

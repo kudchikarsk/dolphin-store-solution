@@ -57,7 +57,7 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
 
         }
 
-        public int GrossTotal => PurchasedItems.Sum(s => s.StockItem.UnitSellingPrice * s.StockItem.Quantity) + OtherCharges;
+        public int GrossTotal => PurchasedItems.Sum(s => s.StockItem.SellingPrice * s.StockItem.Quantity) + OtherCharges;
         public int NetTotal => (int) Math.Ceiling(GrossTotal - (Discount * GrossTotal));
 
         public void UpdatePurchaseItems(IEnumerable<PurchaseItem> purchasedItems)
@@ -104,7 +104,7 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
         public void UpdateAmount(int target)
         {
             var diff = target - GrossTotal;
-            if (target < 0)
+            if (diff < 0)
                 Discount = Math.Abs(diff) / (long)GrossTotal;
             else
                 OtherCharges = diff;
