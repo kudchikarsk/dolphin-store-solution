@@ -12,20 +12,9 @@ namespace DA.SharedKernel
     {
         [ThreadStatic]
         private static List<Delegate> actions;
-        private static Container container;
 
-        static DomainEvents()
-        {
-            container = new Container();
-        }
+        public static IContainer Container { get; set; }
 
-        public static IContainer Container
-        {
-            get
-            {
-                return container;
-            }
-        }
         public static void Register<T>(Action<T> callback) where T : IDomainEvent
         {
             if (actions == null)
