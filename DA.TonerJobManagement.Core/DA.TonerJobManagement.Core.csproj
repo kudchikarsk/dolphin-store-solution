@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="Interfaces\ITonnerRepository.cs" />
     <Compile Include="Models\Aggregates\PurchaseItem.cs" />
+    <Compile Include="Models\Events\ReturnedItemsEvent.cs" />
     <Compile Include="Models\Aggregates\StockItem.cs" />
     <Compile Include="Models\Aggregates\Toner.cs" />
     <Compile Include="Models\Aggregates\TonerJob.cs" />
+    <Compile Include="Models\Events\PurchasedItemsEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

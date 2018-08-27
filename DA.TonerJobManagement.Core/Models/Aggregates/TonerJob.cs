@@ -1,5 +1,6 @@
 ﻿using DA.SharedKernel;
 using DA.SharedKernel.Interfaces;
+using DA.TonerJobManagement.Core.Models.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,17 +64,13 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
         public void UpdatePurchaseItems(IEnumerable<PurchaseItem> purchasedItems)
         {
             var returnedItems = PurchasedItems.ToList();
-            PurchasedItems.Clear();
+            DomainEvents.Raise(new ReturnedItemsEvent(DateTime.Now,returnedItems.ToArray()));
 
+            PurchasedItems.Clear();
             PurchasedItems.AddRange(purchasedItems);            
+            DomainEvents.Raise(new PurchasedItemsEvent(DateTime.Now,purchasedItems.ToArray()));
 
             Modified = DateTime.Now;
-
-            //TODO Raise returned PurchaseItems event
-            //use returnPurchaseItems within event
-
-            //TODO Raise bought PurchasedItems event
-            //use purchasedItems within event
         }
 
         public void ReturnPurchaseItems()
@@ -81,8 +78,7 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
             var returnedItems = PurchasedItems.ToList();
             PurchasedItems.Clear();
 
-            //TODO Raise returned PurchaseItems event
-            //use returnPurchaseItems within event
+            DomainEvents.Raise(new ReturnedItemsEvent(DateTime.Now, returnedItems.ToArray()));
         }
 
         public void UpdateIn(DateTime at)
