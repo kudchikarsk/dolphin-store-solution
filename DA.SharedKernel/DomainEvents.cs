@@ -12,12 +12,17 @@ namespace DA.SharedKernel
     {
         [ThreadStatic]
         private static List<Delegate> actions;
+        private static Container container;
+
+        static DomainEvents()
+        {
+            container = new Container();
+        }
 
         public static IContainer Container
         {
             get
             {
-                var container = new Container();
                 return container;
             }
         }
