@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DA.TonerJobManagement.Core.Models.Events
 {
-    class PurchasedItemsEvent : IDomainEvent
+    public class PurchasedItemsEvent : IDomainEvent
     {
         private readonly PurchaseItem[] purchaseItems;
         private DateTime dateTime;

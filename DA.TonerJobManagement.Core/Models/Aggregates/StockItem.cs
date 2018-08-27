@@ -1,4 +1,5 @@
-﻿using DA.SharedKernel;
+﻿using System;
+using DA.SharedKernel;
 
 namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
@@ -12,19 +13,6 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
         public StockItem() // For EF
         {
 
-        }
-
-        public StockItem(
-            string name,
-            int  quantity     , 
-            int  sellingPrice , 
-            int  costPrice              
-            )
-        {
-            Name = name;
-            Quantity     = quantity     ; 
-            SellingPrice = sellingPrice ; 
-            CostPrice    = costPrice    ;  
         }
     }
 }

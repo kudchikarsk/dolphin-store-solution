@@ -36,6 +36,16 @@ namespace DA.StockManagement.Core.Models
             CostPrice = costPrice;
         }
 
+        public void ReturnedQuantity(int quantity)
+        {
+            Quantity += quantity;
+        }
+
+        public void PurchasedQuantity(int quantity)
+        {
+            Quantity -= quantity;
+        }
+
         private StockItem(
             string name,
             int quantity,

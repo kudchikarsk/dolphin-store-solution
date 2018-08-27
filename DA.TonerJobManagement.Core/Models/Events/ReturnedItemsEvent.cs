@@ -4,7 +4,7 @@ using DA.TonerJobManagement.Core.Aggregates.Models;
 
 namespace DA.TonerJobManagement.Core.Models.Events
 {
-    internal class ReturnedItemsEvent:IDomainEvent
+    public class ReturnedItemsEvent:IDomainEvent
     {
         private PurchaseItem[] returnedItems;
         private DateTime dateTime;
