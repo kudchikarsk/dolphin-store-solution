@@ -33,28 +33,30 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/Client
-        public void Post([FromBody]ClientVM value)
+        public ClientVM Post([FromBody]ClientVM value)
         {
             var client = Client.Create(
                 value.Name,
                 value.Address,
-                value.Email,
-                value.Mobile
+                value.Mobile,
+                value.Email
                 );
             repository.Insert(client);
+            return Mapper.Map<ClientVM>(client);
         }
 
         // PUT: api/Client/5
-        public void Put(int id, [FromBody]ClientVM value)
+        public ClientVM Put(int id, [FromBody]ClientVM value)
         {
             var client = repository.GetByID(value.Id);
             client.Update(
                 value.Name,
                 value.Address,
-                value.Email,
-                value.Mobile
+                value.Mobile,
+                value.Email
                 );
             repository.Update(client);
+            return Mapper.Map<ClientVM>(client);
         }
 
         // DELETE: api/Client/5

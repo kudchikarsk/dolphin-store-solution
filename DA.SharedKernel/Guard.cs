@@ -45,7 +45,7 @@ namespace DA.SharedKernel
 
         public static void ForPhoneNumber(string number, string parameterName)
         {
-            var isPhoneNumber=Regex.Match(number, @"^(\+[0-9]{15})$").Success;
+            var isPhoneNumber=Regex.Match(number, @"^([0-9]{6,15})$").Success;
 
             if (!isPhoneNumber)
             {
