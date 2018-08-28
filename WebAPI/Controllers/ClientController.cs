@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Client/5
-        public ClientVM Get(int id)
+        public ClientVM Get(long id)
         {
             return repository.Get(c => c.Id == id).Select(c=>Mapper.Map<ClientVM>(c)).FirstOrDefault();
         }
@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         }
 
         // PUT: api/Client/5
-        public ClientVM Put(int id, [FromBody]ClientVM value)
+        public ClientVM Put(long id, [FromBody]ClientVM value)
         {
             var client = repository.GetByID(value.Id);
             client.Update(
@@ -60,10 +60,9 @@ namespace WebAPI.Controllers
         }
 
         // DELETE: api/Client/5
-        public void Delete(int id)
+        public void Delete(long id)
         {
-            var client = repository.GetByID(id);
-            repository.Delete(client);
+            repository.Delete(id);
         }
     }
 }

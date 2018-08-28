@@ -72,7 +72,6 @@ namespace DA.SharedKernel
         {
             TEntity entityToDelete = dbSet.Find(id);
             Delete(entityToDelete);
-            context.SaveChanges();
         }
 
         public virtual void Delete(TEntity entityToDelete)
