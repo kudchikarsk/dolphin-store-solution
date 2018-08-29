@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebAPI.Models;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.API
 {
     public class ClientController : ApiController
     {
@@ -21,19 +21,20 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Client
-        public IEnumerable<ClientVM> Get(string name=null)
+        public IEnumerable<ClientViewModel> Get(string name=null)
         {
-            return repository.Get(filter:(c)=>name==null || c.Name.ToLower().Contains(name.ToLower())).Select(c=>Mapper.Map<ClientVM>(c));
+            return repository.Get(filter:(c)=>name==null || c.Name.ToLower().Contains(name.ToLower())).Select(c=>Mapper.Map<ClientViewModel>(c));
         }
 
         // GET: api/Client/5
-        public ClientVM Get(long id)
+        public ClientViewModel Get(long id)
         {
-            return repository.Get(c => c.Id == id).Select(c=>Mapper.Map<ClientVM>(c)).FirstOrDefault();
+            var client = repository.GetByID(id);
+            return Mapper.Map<ClientViewModel>(client);
         }
 
         // POST: api/Client
-        public ClientVM Post([FromBody]ClientVM value)
+        public ClientViewModel Post([FromBody]ClientViewModel value)
         {
             var client = Client.Create(
                 value.Name,
@@ -42,11 +43,11 @@ namespace WebAPI.Controllers
                 value.Email
                 );
             repository.Insert(client);
-            return Mapper.Map<ClientVM>(client);
+            return Mapper.Map<ClientViewModel>(client);
         }
 
         // PUT: api/Client/5
-        public ClientVM Put(long id, [FromBody]ClientVM value)
+        public ClientViewModel Put(long id, [FromBody]ClientViewModel value)
         {
             var client = repository.GetByID(value.Id);
             client.Update(
@@ -56,7 +57,7 @@ namespace WebAPI.Controllers
                 value.Email
                 );
             repository.Update(client);
-            return Mapper.Map<ClientVM>(client);
+            return Mapper.Map<ClientViewModel>(client);
         }
 
         // DELETE: api/Client/5

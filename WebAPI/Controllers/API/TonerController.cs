@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebAPI.Models;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.API
 {
     public class TonerController : ApiController
     {
@@ -21,27 +21,27 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Toner
-        public IEnumerable<TonerVM> Get(long clientId, string name=null)
+        public IEnumerable<TonerViewModel> Get(long clientId, string name=null)
         {
-            return repository.Get(t => t.ClientId == clientId && (name == null || t.Name.ToLower().Contains(name.ToLower()))).Select(t=>Mapper.Map<TonerVM>(t)).ToList();
+            return repository.Get(t => t.ClientId == clientId && (name == null || t.Name.ToLower().Contains(name.ToLower()))).Select(t=>Mapper.Map<TonerViewModel>(t)).ToList();
         }
 
         
         // POST: api/Toner
-        public TonerVM Post([FromBody]TonerVM value)
+        public TonerViewModel Post([FromBody]TonerViewModel value)
         {
             var toner = Toner.Create(value.Name, value.ClientId);
             repository.Insert(toner);
-            return Mapper.Map<TonerVM>(toner);
+            return Mapper.Map<TonerViewModel>(toner);
         }
 
         // PUT: api/Toner/5
-        public TonerVM Put(long id, [FromBody]TonerVM value)
+        public TonerViewModel Put(long id, [FromBody]TonerViewModel value)
         {
             var toner = repository.GetByID(value.Id);
             toner.Update(value.Name, value.ClientId);
             repository.Update(toner);
-            return Mapper.Map<TonerVM>(toner);
+            return Mapper.Map<TonerViewModel>(toner);
         }
 
         // DELETE: api/Toner/5

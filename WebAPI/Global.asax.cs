@@ -29,7 +29,9 @@ namespace WebAPI
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
 
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Client, ClientVM>();
+                cfg.CreateMap<Client, ClientViewModel>();
+                cfg.CreateMap<Toner, TonerViewModel>();
+                cfg.CreateMap<Employee, EmployeeViewModel>();
             });
         }
     }
