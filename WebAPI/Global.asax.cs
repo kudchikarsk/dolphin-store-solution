@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DA.ClientManagement.Core.Models;
 using DA.SharedKernel;
+using DA.StockManagement.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace WebAPI
                 cfg.CreateMap<Client, ClientViewModel>();
                 cfg.CreateMap<Toner, TonerViewModel>();
                 cfg.CreateMap<Employee, EmployeeViewModel>();
+                cfg.CreateMap<StockItem, StockItemViewModel>();
             });
         }
     }
