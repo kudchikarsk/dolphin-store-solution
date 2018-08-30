@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\PurchaseItemRepository.cs" />
+    <Compile Include="Repositories\StockItemRepository.cs" />
     <Compile Include="Repositories\TonerJobRepository.cs" />
-    <Compile Include="Repositories\TonnerRepository.cs" />
+    <Compile Include="Repositories\TonerRepository.cs" />
     <Compile Include="TonerJobContext.cs" />
   </ItemGroup>
   <ItemGroup />

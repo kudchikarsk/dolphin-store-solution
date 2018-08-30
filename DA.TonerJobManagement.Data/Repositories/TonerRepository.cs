@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace DA.TonerJobManagement.Data.Repositories
 {
-    public class TonnerRepository : ITonnerRepository
+    public class TonerRepository : ITonerRepository
     {
         private TonerJobContext context;
 
-        public TonnerRepository(TonerJobContext tonerJobContext)
+        public TonerRepository(TonerJobContext tonerJobContext)
         {
             context = tonerJobContext;
         }
 
-        public Toner GetTonnerByID(long id)
+        public Toner GetTonerById(long id)
         {
             return context.Toners.Single(t => t.Id == id);
         }

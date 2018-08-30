@@ -2,8 +2,8 @@
 
 namespace DA.TonerJobManagement.Core.Interfaces
 {
-    public interface ITonnerRepository
+    public interface ITonerRepository
     {
-        Toner GetTonnerByID(long id);
+        Toner GetTonerById(long id);
     }
 }

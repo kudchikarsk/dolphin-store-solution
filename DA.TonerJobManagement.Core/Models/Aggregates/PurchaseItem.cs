@@ -1,9 +1,10 @@
 ﻿using DA.SharedKernel;
+using DA.SharedKernel.Interfaces;
 using System;
 
 namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
-    public class PurchaseItem:Entity<long>
+    public class PurchaseItem:Entity<long>,IAggregateRoot
     {
         public int Quantity { get ; private set ; } 
 

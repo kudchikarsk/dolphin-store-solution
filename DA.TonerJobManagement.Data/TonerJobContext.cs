@@ -15,6 +15,8 @@ namespace DA.TonerJobManagement.Data
         }
 
         public DbSet<Toner> Toners { get; set; }
+        public DbSet<StockItem> StockItems { get; set; }
         public DbSet<TonerJob> TonerJobs { get; set; }
+        public DbSet<PurchaseItem> PurchaseItems { get; set; }
     }
 }

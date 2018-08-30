@@ -83,9 +83,17 @@
       <Project>{8b3c073c-4767-4bd0-8cd1-06372ab2204a}</Project>
       <Name>DA.SharedKernel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DA.StockManagement.Data\DA.StockManagement.Data.csproj">
+      <Project>{521C6CF9-EE5A-453C-8A86-C87F4EC68B7C}</Project>
+      <Name>DA.StockManagement.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DA.TonerJobManagement.Core\DA.TonerJobManagement.Core.csproj">
       <Project>{64a253ea-8f18-4dcc-b298-f30b303bb61e}</Project>
       <Name>DA.TonerJobManagement.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DA.TonerJobManagement.Data\DA.TonerJobManagement.Data.csproj">
+      <Project>{EAD678A3-5A6B-4B1F-86CE-B670E5FBF648}</Project>
+      <Name>DA.TonerJobManagement.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

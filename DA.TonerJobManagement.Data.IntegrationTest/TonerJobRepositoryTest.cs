@@ -16,8 +16,8 @@ namespace DA.TonerJobManagement.Data.Test
             //Arrange
             var context = new TonerJobContext();
             var jobRepository = new TonerJobRepository(context);
-            var tonnerRepository = new TonnerRepository(context);
-            var tonerJob = TonerJob.Create(1, new List<Toner>() { tonnerRepository.GetTonnerByID(1) }, 1, 1, DateTime.Now, DateTime.Now.AddDays(1), new List<PurchaseItem>(), "", 0);
+            var tonnerRepository = new TonerRepository(context);
+            var tonerJob = TonerJob.Create(1, new List<Toner>() { tonnerRepository.GetTonerById(1) }, 1, 1, DateTime.Now, DateTime.Now.AddDays(1), new List<PurchaseItem>(), "", 0);
 
             //Act
             Action action = () => jobRepository.Insert(tonerJob);

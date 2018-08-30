@@ -247,6 +247,7 @@
     <Compile Include="Controllers\API\ClientController.cs" />
     <Compile Include="Controllers\API\EmployeeController.cs" />
     <Compile Include="Controllers\API\StockItemController.cs" />
+    <Compile Include="Controllers\API\TonerJobController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\TonerController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -262,7 +263,9 @@
     <Compile Include="Models\ClientViewModel.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PurchaseItemViewModel.cs" />
     <Compile Include="Models\StockItemViewModel.cs" />
+    <Compile Include="Models\TonerJobViewModel.cs" />
     <Compile Include="Models\TonerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

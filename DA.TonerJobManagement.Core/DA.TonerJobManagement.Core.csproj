@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ITonnerRepository.cs" />
+    <Compile Include="Interfaces\IPurchaseItem.cs" />
+    <Compile Include="Interfaces\IStockItemRepository.cs" />
+    <Compile Include="Interfaces\ITonerRepository.cs" />
     <Compile Include="Models\Aggregates\PurchaseItem.cs" />
     <Compile Include="Models\Events\ReturnedItemsEvent.cs" />
     <Compile Include="Models\Aggregates\StockItem.cs" />
