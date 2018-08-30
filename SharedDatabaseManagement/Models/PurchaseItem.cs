@@ -4,11 +4,9 @@ namespace SharedDatabaseManagement.Models
 {
     public class PurchaseItem
     {
-        public long Id { get; set; }        
-        public long StockItemId { get; set; }
+        public long Id { get; set; }
         public int Quantity { get; set; }
 
-        [ForeignKey("StockItemId")]
         public virtual StockItem StockItem { get; set; }
         public virtual TonerJob TonerJob { get; set; }
     }

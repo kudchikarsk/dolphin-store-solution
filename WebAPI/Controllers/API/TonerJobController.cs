@@ -29,9 +29,16 @@ namespace WebAPI.Controllers.API
         }
 
         // GET: api/TonerJob
-        public IEnumerable<TonerJobViewModel> Get(DateTime dateTime=new DateTime())
+        public IEnumerable<TonerJobViewModel> Get(DateTime? @in=null, DateTime? @out=null)
         {
-            var tonerJobs=repository.Get(filter: (t) => t.In >= dateTime && t.Out <= dateTime, includeProperties: "PurchasedItems,Toners");
+            if (@in == null || @out == null)
+            {
+                @in = DateTime.Now;
+                @out = DateTime.Now;
+            }
+            var inDate = new DateTime(@in.Value.Year, @in.Value.Month, @in.Value.Day);
+            var outDate = new DateTime(@out.Value.Year, @out.Value.Month, @out.Value.Day);
+            var tonerJobs=repository.Get(filter: (t) => t.In >= inDate  && t.Out <= outDate , includeProperties: "PurchasedItems,Toners");
             return tonerJobs.Select(t=>t.ToViewModel());
         }
 

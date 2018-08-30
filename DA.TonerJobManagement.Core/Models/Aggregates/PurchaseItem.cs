@@ -6,8 +6,7 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
 {
     public class PurchaseItem:Entity<long>,IAggregateRoot
     {
-        public int Quantity { get ; private set ; } 
-
+        public int Quantity { get ; private set ; }
         public StockItem StockItem { get ; private set ; } 
         public TonerJob  TonerJob  { get ; private set ; }
 

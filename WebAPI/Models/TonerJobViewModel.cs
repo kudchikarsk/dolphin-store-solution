@@ -15,7 +15,6 @@ namespace WebAPI.Models
         public string Remarks { get; set; }
         public int OtherCharges { get; set; }
         public double Discount { get; set; }
-        public int Target { get; set; }
 
         public DateTime Modified { get; set; }
         public DateTime Created { get; set; }
@@ -23,5 +22,14 @@ namespace WebAPI.Models
         public DateTime Out { get; set; }
         public List<PurchaseItemViewModel> PurchasedItems { get; set; }
         public List<TonerViewModel> Toners { get; set; }
+
+        public int Target
+        {
+            get
+            {
+                var grossTotal = PurchasedItems.Sum(s => s.StockItem.SellingPrice * s.StockItem.Quantity) + OtherCharges;
+                return (int)Math.Ceiling(grossTotal - (Discount * grossTotal));
+            }
+        }
     }
 }

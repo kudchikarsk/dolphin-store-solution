@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using DA.ClientManagement.Core.Models;
+using C=DA.ClientManagement.Core.Models;
 using DA.SharedKernel;
-using DA.StockManagement.Core.Models;
+using S=DA.StockManagement.Core.Models;
+using T=DA.TonerJobManagement.Core.Aggregates.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +31,14 @@ namespace WebAPI
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
 
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Client, ClientViewModel>();
-                cfg.CreateMap<Toner, TonerViewModel>();
-                cfg.CreateMap<Employee, EmployeeViewModel>();
-                cfg.CreateMap<StockItem, StockItemViewModel>();
+                cfg.CreateMap<C.Client, ClientViewModel>();
+                cfg.CreateMap<C.Toner, TonerViewModel>();
+                cfg.CreateMap<C.Employee, EmployeeViewModel>();
+                cfg.CreateMap<S.StockItem, StockItemViewModel>();
+                cfg.CreateMap<T.TonerJob, TonerJobViewModel>();
+                cfg.CreateMap<T.PurchaseItem, PurchaseItemViewModel>();
+                cfg.CreateMap<T.StockItem, StockItemViewModel>();
+                cfg.CreateMap<T.Toner, TonerViewModel>();
             });
         }
     }
