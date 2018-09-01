@@ -7,6 +7,8 @@ using DA.TonerJobManagement.Data;
 using DA.TonerJobManagement.Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -82,7 +84,9 @@ namespace WebAPI.Controllers.API
         // DELETE: api/Employee/5
         public void Delete(int id)
         {
-            repository.Delete(id);
+            var tonerJob = repository.Get(filter: (t) => t.Id == id, includeProperties: "PurchasedItems.StockItem,Toners").Single();
+            tonerJob.ReturnPurchaseItems();
+            repository.Delete(tonerJob);
         }
 
         private List<Toner> GetToners(List<TonerViewModel> toners)
