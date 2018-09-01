@@ -22,12 +22,14 @@ namespace WebAPI.Controllers.API
         public IRepository<TonerJob> repository;
         private readonly ITonerRepository tonerRepository;
         private readonly IStockItemRepository stockItemRepository;
+        private readonly IPurchaseItemRepository purchaseItemRepository;
 
-        public TonerJobController(IRepository<TonerJob> repository,ITonerRepository tonerRepository, IStockItemRepository stockItemRepository)
+        public TonerJobController(IRepository<TonerJob> repository,ITonerRepository tonerRepository, IStockItemRepository stockItemRepository, IPurchaseItemRepository purchaseItemRepository)
         {
             this.repository = repository;
             this.tonerRepository = tonerRepository;
             this.stockItemRepository = stockItemRepository;
+            this.purchaseItemRepository = purchaseItemRepository;
         }
 
         // GET: api/TonerJob
@@ -85,8 +87,10 @@ namespace WebAPI.Controllers.API
         public void Delete(int id)
         {
             var tonerJob = repository.Get(filter: (t) => t.Id == id, includeProperties: "PurchasedItems.StockItem,Toners").Single();
+            var itemsToDelete = tonerJob.PurchasedItems.ToList();
             tonerJob.ReturnPurchaseItems();
             repository.Delete(tonerJob);
+            itemsToDelete.ForEach(p => purchaseItemRepository.Delete(p));            
         }
 
         private List<Toner> GetToners(List<TonerViewModel> toners)
