@@ -19,12 +19,15 @@ namespace WebAPI.Controllers.API
 {
     public class TonerJobController : ApiController
     {
-        public IRepository<TonerJob> repository;
+        private readonly IRepository<TonerJob> repository;
         private readonly ITonerRepository tonerRepository;
         private readonly IStockItemRepository stockItemRepository;
         private readonly IPurchaseItemRepository purchaseItemRepository;
 
-        public TonerJobController(IRepository<TonerJob> repository,ITonerRepository tonerRepository, IStockItemRepository stockItemRepository, IPurchaseItemRepository purchaseItemRepository)
+        public TonerJobController(IRepository<TonerJob> repository,
+            ITonerRepository tonerRepository,
+            IStockItemRepository stockItemRepository, 
+            IPurchaseItemRepository purchaseItemRepository)
         {
             this.repository = repository;
             this.tonerRepository = tonerRepository;
