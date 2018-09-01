@@ -130,6 +130,8 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
 
             if (@out < @in) throw new ArgumentException("In time should be less than Out time!");
 
+            DomainEvents.Raise(new PurchasedItemsEvent(DateTime.Now, purchaseItems.ToArray()));
+
             return new TonerJob(
                 clientId        ,
                 toners          ,
