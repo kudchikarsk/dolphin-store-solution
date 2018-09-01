@@ -125,6 +125,7 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
             Guard.ForLessEqualZero(collectedById, "collectedById");
             Guard.ForLessEqualZero(deliveredById, "deliveredById");
             Guard.ForNull(purchaseItems, "purchaseItems");
+            purchaseItems.ForEach(p => Guard.ForNull(p.StockItem, "purchaseItems.StockItem"));
             Guard.ForNull(toners, "toners");
 
             if (@out < @in) throw new ArgumentException("In time should be less than Out time!");

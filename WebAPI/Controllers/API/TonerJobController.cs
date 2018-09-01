@@ -38,14 +38,14 @@ namespace WebAPI.Controllers.API
             }
             var inDate = new DateTime(@in.Value.Year, @in.Value.Month, @in.Value.Day);
             var outDate = new DateTime(@out.Value.Year, @out.Value.Month, @out.Value.Day);
-            var tonerJobs=repository.Get(filter: (t) => t.In >= inDate  && t.Out <= outDate , includeProperties: "PurchasedItems,Toners");
+            var tonerJobs=repository.Get(filter: (t) => t.In >= inDate  && t.Out <= outDate , includeProperties: "PurchasedItems.StockItem,Toners");
             return tonerJobs.Select(t=>t.ToViewModel());
         }
 
         // GET: api/Employee/5
         public TonerJobViewModel Get(int id)
         {
-            var tonerJob = repository.GetByID(id);
+            var tonerJob = repository.Get(filter: (t) => t.Id==id, includeProperties: "PurchasedItems.StockItem,Toners").Single();
             return tonerJob.ToViewModel();
         }
 
@@ -70,7 +70,7 @@ namespace WebAPI.Controllers.API
         // PUT: api/Employee/5
         public TonerJobViewModel Put(long id, [FromBody]TonerJobViewModel value)
         {
-            var tonerJob = repository.GetByID(value.Id);
+            var tonerJob = repository.Get(filter: (t) => t.Id == id, includeProperties: "PurchasedItems.StockItem,Toners").Single();
             tonerJob.UpdateAmount(value.Target);
             tonerJob.UpdateIn(value.In);
             tonerJob.UpdateOut(value.Out);
@@ -101,7 +101,9 @@ namespace WebAPI.Controllers.API
         public static TonerJobViewModel ToViewModel(this TonerJob tonerJob) {
             var clientContext = new ClientContext();
             var tonerJobViewModel = Mapper.Map<TonerJobViewModel>(tonerJob);
-            tonerJobViewModel.ClientName = clientContext.Clients.Where(c => c.Id == tonerJob.ClientId).First().Name;
+            tonerJobViewModel.ClientName = clientContext.Clients.Where(c => c.Id == tonerJob.ClientId).Single().Name;
+            tonerJobViewModel.CollectedByName = clientContext.Employees.Where(c => c.Id == tonerJob.CollectedById).Single().Name;
+            tonerJobViewModel.DeliveredByName = clientContext.Employees.Where(c => c.Id == tonerJob.DeliveredById).Single().Name;
             return tonerJobViewModel;
         }
     }

@@ -11,7 +11,9 @@ namespace WebAPI.Models
         public long ClientId { get; set; }
         public string ClientName { get; set; }
         public long CollectedById { get; set; }
+        public string CollectedByName { get; set; }
         public long DeliveredById { get; set; }
+        public string DeliveredByName { get; set; }
         public string Remarks { get; set; }
         public int OtherCharges { get; set; }
         public double Discount { get; set; }
@@ -31,5 +33,6 @@ namespace WebAPI.Models
                 return (int)Math.Ceiling(grossTotal - (Discount * grossTotal));
             }
         }
+
     }
 }
