@@ -40,6 +40,7 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
             List<PurchaseItem>  purchaseItems   ,
             string              remarks         ,
             int                 otherCharges    ,
+            double              discount        ,
             DateTime            created         ,
             DateTime            modified        
             )
@@ -53,12 +54,13 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
             PurchasedItems  = purchaseItems ; 
             Remarks         = remarks       ; 
             OtherCharges    = otherCharges  ; 
+            Discount        = discount      ;
             Created         = created       ; 
             Modified        = modified      ; 
 
         }
 
-        public int GrossTotal => PurchasedItems.Sum(s => s.StockItem.SellingPrice * s.StockItem.Quantity) + OtherCharges;
+        public int GrossTotal => PurchasedItems?.Sum(s => s.StockItem.SellingPrice * s.Quantity) ?? 0 + OtherCharges;
         public int NetTotal => (int) Math.Ceiling(GrossTotal - (Discount * GrossTotal));
 
         public void UpdatePurchaseItems(IEnumerable<PurchaseItem> purchasedItems)
@@ -117,7 +119,8 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
             DateTime            @out            ,
             List<PurchaseItem>  purchaseItems   ,
             string              remarks         ,
-            int                 otherCharges    
+            int                 otherCharges    ,
+            double              discount        
             )
         {
 
@@ -142,6 +145,7 @@ namespace DA.TonerJobManagement.Core.Aggregates.Models
                 purchaseItems   ,
                 remarks         ,
                 otherCharges    ,
+                discount        ,
                 DateTime.Now    ,
                 DateTime.Now
                 );

@@ -68,7 +68,8 @@ namespace WebAPI.Controllers.API
                 value.Out,
                 CreatePurchasedItems(value.PurchasedItems),
                 value.Remarks       ,
-                value.OtherCharges  
+                value.OtherCharges  ,
+                value.Discount
                 );
             repository.Insert(tonerJob);
             return tonerJob.ToViewModel();
