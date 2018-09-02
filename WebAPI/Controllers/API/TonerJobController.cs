@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -36,16 +37,32 @@ namespace WebAPI.Controllers.API
         }
 
         // GET: api/TonerJob
-        public IEnumerable<TonerJobViewModel> Get(DateTime? @in=null, DateTime? @out=null)
+        public IEnumerable<TonerJobViewModel> Get(string fromDate=null, string toDate=null)
         {
-            if (@in == null || @out == null)
+            var inDate = DateTime.Today;
+            var outDate = DateTime.Today;
+
+            if (fromDate != null && toDate != null)
             {
-                @in = DateTime.Now;
-                @out = DateTime.Now;
+                try
+                {
+                    var pattern = "ddd MMM dd yyyy";
+                    inDate = DateTime.ParseExact(fromDate,pattern,null,DateTimeStyles.None).Date;
+                    outDate = DateTime.ParseExact(toDate, pattern, null, DateTimeStyles.None).Date;
+                }
+                catch (FormatException) { }
             }
-            var inDate = new DateTime(@in.Value.Year, @in.Value.Month, @in.Value.Day);
-            var outDate = new DateTime(@out.Value.Year, @out.Value.Month, @out.Value.Day);
-            var tonerJobs=repository.Get(filter: (t) => t.In >= inDate  && t.Out <= outDate , includeProperties: "PurchasedItems.StockItem,Toners");
+            else if (fromDate != null)
+            {
+                try
+                {
+                    inDate = DateTime.Parse(fromDate).Date;
+                    outDate = DateTime.Parse(fromDate).Date;
+                }
+                catch (FormatException) { }
+            }
+
+            var tonerJobs=repository.Get(filter: (t) => (t.In >= inDate  && t.Out <= outDate) || (t.In >= inDate && t.In <= outDate) || (t.Out >= inDate && t.Out <= outDate), includeProperties: "PurchasedItems.StockItem,Toners");
             return tonerJobs.Select(t=>t.ToViewModel());
         }
 
@@ -64,8 +81,8 @@ namespace WebAPI.Controllers.API
                 GetToners(value.Toners),
                 value.CollectedById,
                 value.DeliveredById,
-                value.In,
-                value.Out,
+                value.In.Date,
+                value.Out.Date,
                 CreatePurchasedItems(value.PurchasedItems),
                 value.Remarks       ,
                 value.OtherCharges  ,
@@ -80,8 +97,8 @@ namespace WebAPI.Controllers.API
         {
             var tonerJob = repository.Get(filter: (t) => t.Id == id, includeProperties: "PurchasedItems.StockItem,Toners").Single();
             tonerJob.UpdateAmount(value.Target);
-            tonerJob.UpdateIn(value.In);
-            tonerJob.UpdateOut(value.Out);
+            tonerJob.UpdateIn(value.In.Date);
+            tonerJob.UpdateOut(value.Out.Date);
             tonerJob.UpdatePurchaseItems(CreatePurchasedItems(value.PurchasedItems));
             repository.Update(tonerJob);
             return tonerJob.ToViewModel();
